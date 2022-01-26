@@ -12,7 +12,9 @@ export default function Navbar() {
       <ul>
         <li>
           <Link href="/" passHref>
-            <button className="btn-logo">FEED</button>
+            <a>
+              <button className="btn-logo">FEED</button>
+            </a>
           </Link>
         </li>
 
@@ -20,24 +22,32 @@ export default function Navbar() {
         {username && (
           <>
             <li className="push-left">
-              <button onClick={signOutUser}>Sign Out</button>
+              <Link href="/" passHref>
+                <a>
+                  <button onClick={signOutUser}>Sign Out</button>
+                </a>
+              </Link>
             </li>
 
             <li>
               <Link href="/admin" passHref>
-                <button className="btn-blue">Write Posts</button>
+                <a>
+                  <button className="btn-blue">Write Posts</button>
+                </a>
               </Link>
             </li>
 
             <li>
               <Link href={`/${username}`} passHref>
-                <Image
-                  className="img"
-                  width={50}
-                  height={50}
-                  src={user?.photoURL || "/user.png"}
-                  alt="profile"
-                />
+                <a>
+                  <Image
+                    className="img"
+                    width={50}
+                    height={50}
+                    src={user?.photoURL || "/user.png"}
+                    alt="profile"
+                  />
+                </a>
               </Link>
             </li>
           </>
@@ -48,7 +58,9 @@ export default function Navbar() {
           <>
             <li className="push-left">
               <Link href="/enter" passHref>
-                <button className="btn-blue">Log in</button>
+                <a>
+                  <button className="btn-blue">Log in</button>
+                </a>
               </Link>
             </li>
           </>
