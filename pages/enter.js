@@ -51,4 +51,6 @@ function SignOutButton() {
 }
 
 //select username
-function UsernameForm() {}
+function UsernameForm() {
+  return <></>;
+}
