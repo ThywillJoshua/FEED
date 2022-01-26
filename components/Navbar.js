@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useContext } from "react";
+import { UserContext } from "@/lib/context";
+import { signOutUser } from "@/lib/firebase";
 
 export default function Navbar() {
-  const user = null;
-  const username = null;
+  const { user, username } = useContext(UserContext);
 
   return (
     <nav className="navbar">
@@ -18,6 +20,10 @@ export default function Navbar() {
         {username && (
           <>
             <li className="push-left">
+              <button onClick={signOutUser}>Sign Out</button>
+            </li>
+
+            <li>
               <Link href="/admin" passHref>
                 <button className="btn-blue">Write Posts</button>
               </Link>
