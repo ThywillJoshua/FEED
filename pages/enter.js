@@ -10,10 +10,6 @@ import toast from "react-hot-toast";
 export default function EnterPage({}) {
   const { user, username } = useContext(UserContext);
 
-  //1. user signed out <SignInButton/>
-  //2. user signed in, but missing username <UsernameForm/>
-  //3. user signed in & has username <SignOutButton/>
-
   return (
     <main>
       {user ? (
@@ -164,6 +160,6 @@ function UsernameMessage({ username, isValid, loading }) {
   } else if (username && !isValid) {
     return <p className="text-danger">That username is taken!</p>;
   } else {
-    return <></>;
+    return <p></p>;
   }
 }
