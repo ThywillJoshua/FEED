@@ -1,26 +1,39 @@
 import PostFeed from "@/components/PostFeed";
 import UserProfile from "@/components/UserProfile";
-import { getUserWithUsername } from "@/lib/firebase";
-import { collection, query, orderBy, limit } from "firebase/firestore";
+import { firestore, getUserWithUsername } from "@/lib/firebase";
+import {
+  listCollections,
+  collection,
+  doc,
+  query as firebaseQuery,
+  where,
+  orderBy,
+  limit,
+  getDocs,
+} from "firebase/firestore";
 
 export async function getServerSideProps({ query }) {
   const { username } = query;
 
-  const userDoc = await getUserWithUsername("johndoe");
+  const userDoc = await getUserWithUsername("goliath");
 
   let user = null;
   let posts = null;
 
-  //   if (userDoc) {
-  //     user = userDoc.data();
-  //     const postsQuery = userDoc.ref
-  //       .collection("posts")
-  //       .where("published", "==", true)
-  //       .orderBy("createdAt", "desc")
-  //       .limit(5);
+  if (userDoc) {
+    user = userDoc.data();
 
-  //     posts = (await postsQuery.get()).docs.map(postToJSON);
-  //   }
+    const postsRef = collection(firestore, "users", userDoc.id, "posts");
+
+    const postsQuery = firebaseQuery(
+      postsRef,
+      where("published", "==", true),
+      orderBy("createdAt", "desc"),
+      limit(5)
+    );
+
+    posts = (await getDocs(postsQuery)).docs.map(postToJSON);
+  }
 
   return {
     props: { user, posts },
@@ -42,7 +55,7 @@ export function postToJSON(doc) {
   const data = doc.data();
   return {
     ...data,
-    createdAt: data.createdAt.toMilis(),
-    updatedAt: data.createdAt.toMilis(),
+    createdAt: data.createdAt.toMillis(),
+    updatedAt: data.createdAt.toMillis(),
   };
 }

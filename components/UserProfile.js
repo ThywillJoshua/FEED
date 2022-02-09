@@ -5,7 +5,15 @@ export default function UserProfile({ user }) {
 
   return (
     <div className="box-center">
-      <Image src={user.photoURL} alt="user" className="card-img-center" />
+      <div className="card-img-center">
+        <Image
+          src={user.photoURL || "/user"}
+          alt="user"
+          width={100}
+          height={100}
+          //   className="img"
+        />
+      </div>
 
       <p>
         <i>@{user.username}</i>

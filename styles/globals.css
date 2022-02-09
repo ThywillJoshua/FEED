@@ -187,6 +187,7 @@ button.btn-logo {
 
 .card footer {
   display: flex;
+  justify-content: space-between;
 }
 
 .card-img-center {
