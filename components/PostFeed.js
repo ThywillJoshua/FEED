@@ -1,17 +1,17 @@
 import Link from "next/link";
 
+import { v4 as uuidv4 } from "uuid";
+
 export default function PostFeed({ posts }) {
   return (
     posts &&
-    posts.map((post) => (
-      <PostItem post={post} key={post.slug} admin={"admin"} />
-    ))
+    posts.map((post) => <PostItem post={post} key={uuidv4()} admin={"admin"} />)
   );
 }
 
 function PostItem({ post, admin = false }) {
   const wordCount = post?.content.trim().split(/\s+/g).length;
-  const minutesToRead = (wordCount / 100 + 1).toFixed(0); //TODO
+  const minutesToRead = (wordCount / 100 + 1).toFixed(0);
 
   return (
     <div className="card">

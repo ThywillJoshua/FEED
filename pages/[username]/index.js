@@ -2,15 +2,14 @@ import PostFeed from "@/components/PostFeed";
 import UserProfile from "@/components/UserProfile";
 import { firestore, getUserWithUsername } from "@/lib/firebase";
 import {
-  listCollections,
   collection,
-  doc,
   query as firebaseQuery,
   where,
   orderBy,
   limit,
   getDocs,
 } from "firebase/firestore";
+import { postToJSON } from "@/lib/helpers";
 
 export async function getServerSideProps({ query }) {
   const { username } = query;
@@ -47,15 +46,4 @@ export default function UserProfilePage({ user, posts }) {
       <PostFeed posts={posts} />
     </main>
   );
-}
-
-//Convert to json
-
-export function postToJSON(doc) {
-  const data = doc.data();
-  return {
-    ...data,
-    createdAt: data.createdAt.toMillis(),
-    updatedAt: data.createdAt.toMillis(),
-  };
 }
