@@ -32,8 +32,6 @@ export default function Post(props) {
     });
   });
 
-  //   useEffect(() => {}, [id, slug]);
-
   return (
     <main className={styles.container}>
       <section>
