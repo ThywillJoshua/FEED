@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { auth, firestore, serverTimestamp } from "@/lib/firebase";
+import { doc, getDoc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { auth, firestore } from "@/lib/firebase";
 import { UserContext } from "@/lib/context";
 import styles from "../../styles/Admin.module.css";
 import ImageUploader from "@/components/ImageUploader";
@@ -98,6 +98,7 @@ function PostForm({ defaultValues, postRef, preview }) {
   });
 
   const updatePost = async ({ content, published }) => {
+    console.log("Hello");
     try {
       await updateDoc(postRef, {
         content,
