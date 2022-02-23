@@ -3,33 +3,26 @@ import PostContent from "@/components/PostContent";
 import { getUserWithUsername, firestore } from "@/lib/firebase";
 import { postToJSON } from "@/lib/helpers";
 import {
-  collection,
   collectionGroup,
   getDocs,
   query as firebaseQuery,
-  where,
-  limit,
   onSnapshot,
+  getDoc,
+  doc,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import AuthCheck from "@/components/AuthCheck";
+import HeartButton from "../../components/HeartButton";
 
 export default function Post(props) {
   const [post, setPost] = useState(props.post);
   const { slug, id } = props.path;
 
-  const postsRef = collection(firestore, "users", id, "posts");
+  const postRef = doc(firestore, "users", id, "posts", slug);
 
-  const q = firebaseQuery(postsRef, where("slug", "==", slug), limit(1));
-
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    const posts = [];
-    querySnapshot.forEach((doc) => {
-      posts.push(postToJSON(doc));
-
-      if (posts[0]) {
-        setPost(posts[0]);
-      }
-    });
+  const unsub = onSnapshot(postRef, (doc) => {
+    setPost(postToJSON(doc));
   });
 
   return (
@@ -42,6 +35,24 @@ export default function Post(props) {
         <p>
           <strong>{post.heartCount || 0} ❤️</strong>
         </p>
+
+        <AuthCheck
+          fallback={
+            <Link href="/enter">
+              <a>
+                <button> ❤️ Sign Up</button>
+              </a>
+            </Link>
+          }
+        >
+          <HeartButton postRef={postRef} />
+        </AuthCheck>
+
+        <Link href={`/admin/${post.slug}`}>
+          <a>
+            <button className="btn-green">Edit Post</button>
+          </a>
+        </Link>
       </aside>
     </main>
   );
@@ -55,17 +66,11 @@ export async function getStaticProps({ params }) {
   let path;
 
   if (userDoc) {
-    const postsRef = collection(firestore, "users", userDoc.id, "posts");
+    const postsRef = doc(firestore, "users", userDoc.id, "posts", slug);
 
-    const postsQuery = firebaseQuery(
-      postsRef,
-      where("slug", "==", slug),
-      limit(1)
-    );
+    const res = await getDoc(postsRef);
 
-    const res = await getDocs(postsQuery);
-    const posts = res.docs.map(postToJSON);
-    post = posts[0];
+    post = postToJSON(res);
     path = { slug: post.slug, id: userDoc.id };
   }
 

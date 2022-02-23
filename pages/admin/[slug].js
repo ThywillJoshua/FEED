@@ -9,6 +9,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth, firestore, serverTimestamp } from "@/lib/firebase";
 import { UserContext } from "@/lib/context";
 import styles from "../../styles/Admin.module.css";
+import ImageUploader from "@/components/ImageUploader";
 
 export default function AdminPostEdit({ posts }) {
   return (
@@ -122,6 +123,7 @@ function PostForm({ defaultValues, postRef, preview }) {
       )}
 
       <div className={preview ? styles.hidden : styles.controls}>
+        <ImageUploader />
         <textarea
           name="content"
           {...register("content", {
@@ -136,15 +138,18 @@ function PostForm({ defaultValues, postRef, preview }) {
         )}
 
         <fieldset>
-          <input
-            type="checkbox"
-            className={styles.checkbox}
-            name="published"
-            {...register("published")}
-          />
+          <label>
+            <small>Publish</small>
+            <input
+              type="checkbox"
+              className={styles.checkbox}
+              name="published"
+              {...register("published")}
+            />
+          </label>
         </fieldset>
 
-        <button type="submit" className="btn-green">
+        <button type="submit" className="btn-green" disabled={errors.content}>
           Save Changes
         </button>
       </div>
