@@ -10,6 +10,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { postToJSON } from "@/lib/helpers";
+import AuthCheck from "@/components/AuthCheck";
 
 export async function getServerSideProps({ query }) {
   const { username } = query;
@@ -48,8 +49,10 @@ export async function getServerSideProps({ query }) {
 export default function UserProfilePage({ user, posts }) {
   return (
     <main>
-      <UserProfile user={user} />
-      <PostFeed posts={posts} />
+      <AuthCheck>
+        <UserProfile user={user} />
+        <PostFeed posts={posts} />
+      </AuthCheck>
     </main>
   );
 }
