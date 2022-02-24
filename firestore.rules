@@ -88,8 +88,6 @@ service cloud.firestore {
         return hasValidFields && validChange && ( countChange == 1 ? heartDocAdded : heartDocRemoved );
       }
       
-
-      
     }
     
   }

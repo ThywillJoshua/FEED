@@ -6,9 +6,12 @@ import Loader from "@/components/Loader";
 import { writeBatch, doc, getDoc } from "firebase/firestore";
 import debounce from "lodash.debounce";
 import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+let router;
 
 export default function EnterPage({}) {
   const { user, username } = useContext(UserContext);
+  router = useRouter();
 
   return (
     <main>
@@ -43,6 +46,7 @@ function SignInButton() {
 
 //sign out with Google button
 function SignOutButton() {
+  router.push("/");
   return (
     <button className="btn-google" onClick={signOutUser}>
       Sign Out
@@ -141,11 +145,11 @@ function UsernameForm() {
             Choose
           </button>
 
-          <h3>Debug State</h3>
+          {/* <h3>Debug State</h3>
           <div>
-            Username:{formValue} <br /> Loading: {loading.toString()} <br />{" "}
+            Username:{formValue} <br /> Loading: {loading.toString()} <br />
             Username Valid: {isValid.toString()}
-          </div>
+          </div> */}
         </form>
       </section>
     )
