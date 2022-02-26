@@ -83,16 +83,15 @@ function UsernameForm() {
   };
 
   const checkUsername = useCallback(
-    () =>
-      debounce(async (username) => {
-        if (username.length >= 3) {
-          const ref = doc(firestore, "usernames", username);
-          const snap = await getDoc(ref);
+    debounce(async (username) => {
+      if (username.length >= 3) {
+        const ref = doc(firestore, "usernames", username);
+        const snap = await getDoc(ref);
 
-          setIsValid(!snap.exists());
-          setLoading(false);
-        }
-      }, 500),
+        setIsValid(!snap.exists());
+        setLoading(false);
+      }
+    }, 500),
     []
   );
 

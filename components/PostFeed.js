@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import { v4 as uuidv4 } from "uuid";
 
 export default function PostFeed({ posts }) {
@@ -29,7 +28,7 @@ function PostItem({ post, admin = false }) {
 
       <footer>
         <span>
-          {wordCount} words. {minutesToRead} min read
+          {wordCount} words, {minutesToRead} min read
         </span>
         <span> {post.heartCount} ❤️</span>
       </footer>
