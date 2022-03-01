@@ -1,34 +1,53 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Built primarily with love but also Next.js
+In order to get this project on your local machine, please fork the repository and then type the following command: git clone <code>REPO_URL</code> into a directory on your computer.
+<br>
+<br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Install Dependencies
+Once you've successfully cloned the repository, within the directory where you've cloned the project, please run: <code>npm install</code> to install necessary dependencies.
+<br>
+<br>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Local Development
+Now that the dependenices are installed, feel free to run <code>npm run dev</code> within the same directory. This will build a local development server with hot reloading. The default URL is http://localhost:3000.
+<br>
+<br>
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Live Link
+Hosted by Vercel: https://feed-blog-three.vercel.app/
+<br>
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Tools Used
 
-## Deploy on Vercel
+**Markdown:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Google Auth :**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Firebase :**
+
+**React hook form :**
+
+**React Markdown :**
+
+**React Hot Toast :**
+
+**UUID :**
+
+
+<br>
+<br>
+
+### What You Can expect in this Application:
+
+- Sign Up with Google and Choose unique user name
+- Find all post on homepage
