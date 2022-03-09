@@ -29,25 +29,25 @@ Hosted by Vercel: https://feed-blog-three.vercel.app/
 
 ### Tools Used
 
-**Markdown:**
+**Markdown**
 
-**Google Auth :**
+**Google Auth**
 
-**Firebase :**
+**Firebase**
 
-**React hook form :**
+**React hook form**
 
-**React Markdown :**
+**React Markdown**
 
-**React Hot Toast :**
+**React Hot Toast**
 
-**UUID :**
+**UUID**
 
 
 <br>
 <br>
 
-### What you aan expect in this application:
+### What you can expect in this application:
 
 - Sign Up with Google and Choose unique user name
 - Find all post on homepage
