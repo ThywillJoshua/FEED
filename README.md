@@ -47,7 +47,11 @@ Hosted by Vercel: https://feed-blog-three.vercel.app/
 <br>
 <br>
 
-### What You Can expect in this Application:
+### What you aan expect in this application:
 
 - Sign Up with Google and Choose unique user name
 - Find all post on homepage
+- Find users post on user profile page
+- Add posts and update post using markdown
+- Upload images and add to blog post
+- Like or Dislike posts
